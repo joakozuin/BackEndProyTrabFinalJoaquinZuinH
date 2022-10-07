@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ProyBackEnd</title>
+    <!-- <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script> -->
+    <link href="./css/mui.min.css" rel="stylesheet" type="text/css" />
+    <link href="./css/estilos.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body class="contenedor" style="background-color: rgb(247, 251, 255)">
+    <div class="mui-container-fluid">
+      <div
+        class="mui--text-display1 mui--text-center"
+        style="height: 50px; margin-top: 20px"
+      >
+        Coder House eCommerce BackEnd
+      </div>
+      <div class="mui-divider"></div>
+
+      <!--  -->
+      <div
+        class="mui-row"
+        style="margin-top: 10px; background-color: rgb(241, 238, 238)"
+      >
+        <!--Usuario Logeado  -->
+        <script type="text/x-handlebars-template" id="handlebUsuarioLogeado">
+          <div
+            class="mui-col-md-4 mui--text-center"
+            style="background-color: rgb(208, 222, 235)"
+          >
+            <h2>Hola Bienvenido: {{usuario}} </h2>
+          </div>
+
+          <div
+            class="mui-col-md-2 mui--text-center"
+            style="background-color: rgb(241, 238, 238);margin-top:10px"
+          >
+
+            <button
+              id="perfilUsuario"
+              class="mui-btn mui-btn--small mui-btn--raised mui-btn--primary"
+              onclick="activateModal2()"
+            > PerfilUsuario </button>
+
+          </div>
+          <div
+            class="mui-col-md-1 mui--text-center"
+            style="background-color: rgb(241, 238, 238);margin-top:10px"
+          >
+            <img
+              id="avatarUsuario"
+              src={{avatar}}
+              alt="avatarClie"
+              width="50"
+              height="60"
+            />
+          </div>
+        </script>
+
+        <div id="rendUsuarioLogeado"></div>
+
+        <!--Usuario Logeado  -->
+
+        <div
+          class="mui-col-md-2 mui--text-center"
+          style="background-color: rgb(241, 238, 238); margin-top: 10px"
+        >
+          <button
+            id="chatear"
+            class="mui-btn mui-btn--small mui-btn--raised mui-btn--danger"
+          >
+            Chatear
+          </button>
+        </div>
+
+        <div
+          class="mui-col-md-2 mui--text-center"
+          style="background-color: rgb(241, 238, 238); margin-top: 10px"
+        >
+          <button
+            id="desLogearse"
+            class="mui-btn mui-btn--small mui-btn--raised mui-btn--accent"
+          >
+            Deslogear
+          </button>
+        </div>
+      </div>
+      <!--  -->
+
+      <div class="mui-row" style="margin-left: 10px; margin-top: 20px">
+        <!-- Tabla Carrito -->
+
+        <div class="mui-col-md-4" style="background-color: white">
+
+          <script type="text/x-handlebars-template" id="handlebProductoCarrito">
+            <!--Row Formulario Listado -->
+
+            <!-- Listado de Productos en el carrito Armado plantilla Handlebars-->
+
+            <h2 class="mui--text-center">Productos en el Carrito:{{prod.length}}</h2>
+            <table class="mui-table mui-table--bordered mui-striped">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                 <!--  <th>Descripción</th> -->
+                  <th>Código</th>
+                  <th>Imagen</th>
+                  <th>Precio</th>
+                 <!--  <th>Stock</th> -->
+
+                </tr>
+              </thead>
+
+              <tbody>
+                {{#if prodHayUa}}
+                  {{#each prod}}
+                    <tr>
+                      <td>{{nombre}} </td>
+                     <!--  <td>{{descripcion}} </td> -->
+                      <td>{{codigo}} </td>
+                      <td class="mui--text-center"><img
+                          src={{urlFoto}}
+                          width="60"
+                          height="60"
+                          alt="coder"
+                        />
+                      </td>
+                      <td>{{precio}} </td>
+                     <!--  <td>{{stock}} </td> -->
+                      <!--  <td><button id="enviarProd" class=" mui-btn mui-btn--small mui-btn--raised mui-btn--accent"> Editar</button> </td> -->
+                      <!--  <td><button id="enviarProd" class=" mui-btn mui-btn--small mui-btn--raised mui-btn--danger"> Borrar</button> </td> -->
+                      <!-- <td><button
+                          id="compProd"
+                          class="mui-btn mui-btn--small mui-btn--raised mui-btn--primary"
+                          data="{{_id}}"
+                        > Comprar</button>
+                      </td> -->
+                    </tr>
+                  {{/each}}
+                {{else}}
+                {{/if}}
+
+                {{#if prodHayUu}}
+                  {{#each prod}}
+                    <tr>
+                      <td>{{nombre}} </td>
+                     <!--  <td>{{descripcion}} </td> -->
+                      <td>{{codigo}} </td>
+                      <td class="mui--text-center"><img
+                          src={{urlFoto}}
+                          width="60"
+                          height="60"
+                          alt="coder"
+                        />
+                      </td>
+                      <td>{{precio}} </td>
+                      <!-- <td>{{stock}} </td> -->
+                      <!-- <td><button
+                          id="compProd"
+                          class="mui-btn mui-btn--small mui-btn--raised mui-btn--primary"
+                          data="{{_id}}"
+                        > Comprar</button>
+                      </td> -->
+                    </tr>
+                  {{/each}}
+                {{else}}
+                {{/if}}
+
+              </tbody>
+
+            </table>
+
+            {{#if prodHay}}{{else}}
+              <h3
+                class="mui--text-center"
+                style="background-color:rgb(230, 138, 138)"
+              > El Usuario, no tiene productos en el carrito</h3>
+            {{/if}}
+
+            <!-- Listado de Productos en el carrito Armado plantilla Handlebars-->
+          </script>
+          <!--Row  Listado -->
+
+          <!--Renderizado Plantilla Handlebars Productos Carrito-->
+
+          <div id="rendProdCarrito"></div>
+
+          <!--Renderizado Plantilla Handlebars Productos Carrito-->
+          <button
+           id="OrdenCarrito"
+           class="mui-btn mui-btn--small mui-btn--raised mui-btn--primary"
+           > Generar Orden</button>
+
+        </div>
+
+        <!-- Tabla Carrito -->
+
+
+
+        <div class="mui-col-md-8" style="background-color: rgb(246, 235, 235)">
+          <!-- <div class="mui--text-center">
+                <button id="cargarTabla" class=" mui-btn mui-btn--raised mui-btn--primary"> Cargar Tabla</button>
+               </div> -->
+
+          <script type="text/x-handlebars-template" id="handlebTablaProductos">
+            <!--Row Formulario Listado -->
+
+            <!-- Listado de Productos Armado plantilla Handlebars-->
+
+            <h2 class="mui--text-center">Cantidad de producto en el listado:{{prod.length}}</h2>
+            <table class="mui-table mui-table--bordered mui-striped">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Código</th>
+                  <th>Imagen</th>
+                  <th>Precio</th>
+                  <th>Stock</th>
+
+                </tr>
+              </thead>
+
+              <tbody>
+                {{#if prodHayUa}}
+                  {{#each prod}}
+                    <tr>
+                      <td>{{nombre}} </td>
+                      <td>{{descripcion}} </td>
+                      <td>{{codigo}} </td>
+                      <td class="mui--text-center"><img
+                          src={{urlFoto}}
+                          width="50"
+                          height="50"
+                          alt="coder"
+                        />
+                      </td>
+                      <td>{{precio}} </td>
+                      <td>{{stock}} </td>
+                      <!--  <td><button id="enviarProd" class=" mui-btn mui-btn--small mui-btn--raised mui-btn--accent"> Editar</button> </td> -->
+                      <!--  <td><button id="enviarProd" class=" mui-btn mui-btn--small mui-btn--raised mui-btn--danger"> Borrar</button> </td> -->
+                      <td><button
+                          id="compProd"
+                          class="mui-btn mui-btn--small mui-btn--raised mui-btn--primary"
+                          data="{{_id}}"
+                        > Comprar</button>
+                      </td>
+                    </tr>
+                  {{/each}}
+                {{else}}
+                {{/if}}
+
+                {{#if prodHayUu}}
+                  {{#each prod}}
+                    <tr>
+                      <td>{{nombre}} </td>
+                      <td>{{descripcion}} </td>
+                      <td>{{codigo}} </td>
+                      <td class="mui--text-center"><img
+                          src={{urlFoto}}
+                          width="50"
+                          height="50"
+                          alt="coder"
+                        />
+                      </td>
+                      <td>{{precio}} </td>
+                      <td>{{stock}} </td>
+                      <td><button
+                          id="compProd"
+                          class="mui-btn mui-btn--small mui-btn--raised mui-btn--primary"
+                          data="{{_id}}"
+                        > Comprar</button>
+                      </td>
+                    </tr>
+                  {{/each}}
+                {{else}}
+                {{/if}}
+
+              </tbody>
+
+            </table>
+
+            {{#if prodHay}}{{else}}
+              <h3
+                class="mui--text-center"
+                style="background-color:rgb(230, 138, 138)"
+              > Disculpe, no hay productos</h3>
+            {{/if}}
+
+            <!-- Listado de Productos Armado plantilla Handlebars-->
+          </script>
+          <!--Row Formulario Listado -->
+
+          <!--Renderizado Plantilla Handlebars Productos-->
+
+          <div id="rendProd"></div>
+
+          <!--Renderizado Plantilla Handlebars Productos-->
+        </div>
+      </div>
+
+      <!--  <div class="mui-col-md-2"></div> -->
+
+      <div class="mui-divider"></div>
+
+      <div class="mui-row">
+        <div class="mui-col-md-4"></div>
+
+        <div class="mui-col-md-4"></div>
+
+        <div class="mui-col-md-4"></div>
+      </div>
+
+      <br />
+
+      <div class="mui-divider"></div>
+
+      <!-- Area del Websocket -->
+
+      <!-- <div class="mui-row" style="margin-top:10px;background-color: rgb(241, 238, 238)">
+         <div class="mui--text-display1  mui--text-center" style="height:50px; color:blue">Listado Carrito</div>
+
+          <div class="mui-col-md-2" style="background-color: rgb(241, 238, 238)">
+            <h3></h3>
+          
+           
+          </div>
+          <div class="mui-col-md-8 mui--text-center " style="background-color: rgb(208, 222, 235)">
+            <h3></h3> -->
+
+      <!--Grilla Carrito  -->
+
+      <!--Grilla Carrito  -->
+
+      <!-- </div>
+          <div class="mui-col-md-2"  style="background-color: rgb(241, 238, 238)">
+           <h3></h3>
+
+         
+          </div>
+
+        </div> -->
+
+      <!--  -->
+    </div>
+    <!-- container fluid -->
+
+    <dialog id="modal2" style="background-color: rgb(188, 191, 198)">
+      <!--Ventana Modal Usuario Logeado  -->
+
+      <script type="text/x-handlebars-template" id="handlebUsuarioLogeado1">
+        <div class="mui-container">
+          <div class="mui-panel">
+
+            <h3>Datos del usuario:</h3>
+            <h4>Nombre: {{usuario}} </h4>
+            <h4>Edad: {{edad}} </h4>
+            <h4>Tipo de Perfil: {{tipo}} </h4>
+            <h4>Correo: {{correo}} </h4>
+
+          </div>
+        </div>
+      </script>
+
+      <div id="rendUsuarioLogeado1"></div>
+      <!--Ventana Modal Usuario Logeado  -->
+      <button
+        class="mui-btn mui-btn--small mui-btn--primary mui-btn--raised"
+        onclick="window.modal2.close()"
+      >
+        Cerrar
+      </button>
+    </dialog>
+
+    <script src="./js/mui.min.js"></script>
+
+    <script src="./socket.io/socket.io.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+      integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="./js/productosClie00.js"></script>
+
+    <!-- <script src="./js/productos02.js"></script> -->
+
+    <script>
+      //const URL = "https://joakowebbackendtrabfh.herokuapp.com/";
+
+      const botonDeslogear = document.querySelector("#desLogearse");
+      const botonChatear = document.querySelector("#chatear");
+
+      //Deslogea al usuario
+      //
+      botonDeslogear.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        console.log("Apretando el Boton deslogear");
+        console.log(URL + "logout.html");
+
+        //cargar una pagina HTML
+        //
+        location.assign(URL + "logout.html");
+      });
+
+      //Chatear
+      //
+      botonChatear.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        console.log("Apretando el Boton Chatear");
+
+        //cargar una pagina HTML
+        //
+        location.assign(URL + "chatClie.html");
+      });
+
+      function activateModal2() {
+        window.modal2.showModal();
+      }
+
+
+      //Captura el click el boton (comprar)
+      //de la tabla.
+      //-----------------------------------------------
+      let idReg = 0;
+      let titulo = "";
+      document.addEventListener("click", (e) => {
+        if (e.target.matches("#compProd")) {
+          //Boton Editar
+          idReg = e.path[0].attributes.data.value;
+          console.log("Apretando el boton comprar");
+          console.log(` id= ${idReg} ?`);
+          console.log(idReg);
+          
+          localStorage.setItem("idProducto", idReg);
+
+          titulo = `¿Está seguro de Comprar el producto seleccionado... ?`;
+
+          if (confirm(titulo) == true) {
+
+            text = "You pressed OK!";
+
+            location.assign(URL+"productosClie.html");
+
+          } else {
+
+            text = "You canceled!";
+
+          }
+        }
+
+
+        
+
+  
+      });
+
+
+
+
+
+    </script>
+  </body>
+</html>

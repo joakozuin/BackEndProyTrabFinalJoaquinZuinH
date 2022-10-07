@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <Title>ProyBackEnd</Title>
+    <!-- <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script> -->
+    <link href="./css/mui.min.css" rel="stylesheet" type="text/css" />
+    <link href="./css/estilos.css" rel="stylesheet" type="text/css" />
+    
+  </head>
+   <body class="contenedor" style="background-color: rgb(247, 251, 255)" >
+     
+    <div class="mui-container-fluid ">
+
+      <div class="mui--text-display1  mui--text-center" style="height:50px;margin-top:20px">Coder House eCommerce  BackEnd</div>
+      <div class="mui-divider"></div>
+  
+     
+    
+      
+      <!--  -->
+      <div class="mui-row" style="margin-top:10px;background-color: rgb(241, 238, 238)">
+
+        <!--Usuario Logeado  -->
+         <script type="text/x-handlebars-template" id="handlebUsuarioLogeado">
+
+          <div class="mui-col-md-4 mui--text-center " style="background-color: rgb(208, 222, 235)">
+           <h2>Nombre :{{usuario}}</h2>
+           <h3>Correo:{{email}}</h3>
+           <h4>Usuario:{{tipoUs}}</h4>
+          </div>
+          <div class="mui-col-md-2 mui--text-center "  style="background-color: rgb(241, 238, 238);margin-top:10px">
+            
+            <!--  <button id="perfilUsuario" class=" mui-btn mui-btn--small mui-btn--raised mui-btn--primary" onclick="activateModal()" > PerfilUsuario </button> -->
+             
+            </div>
+            <div class="mui-col-md-1 mui--text-center "  style="background-color: rgb(241, 238, 238);margin-top:10px">        
+             <img id="avatarUsuario" src={{avatar}} alt="avatarClie" width="50" height="60">
+            </div>
+         </script>
+
+         <div id="rendUsuarioLogeado"></div>
+        <!--Usuario Logeado  -->
+
+        
+         
+         <div class="mui-col-md-2 mui--text-center "  style="background-color: rgb(241, 238, 238);margin-top:10px">
+            
+          <!-- <button id="chatear" class=" mui-btn mui-btn--small mui-btn--raised  mui-btn--danger"> Chatear</button> -->
+       
+          </div>
+
+          <div class="mui-col-md-2 mui--text-center "  style="background-color: rgb(241, 238, 238);margin-top:10px">
+            
+               <button id="desLogearse" class=" mui-btn mui-btn--small mui-btn--raised mui-btn--accent"> Deslogear</button>
+            
+          </div>
+
+      </div>
+      <!--  -->
+      
+      <div class="mui-divider"></div>
+      <div class="mui-row" style="margin-left:10px; margin-top:20px">
+
+
+            <!--Renderizado Plantilla Handlebars Productos-->
+
+           
+  
+            <!--Renderizado Plantilla Handlebars Productos-->
+      
+      </div>
+
+    
+
+  
+
+
+     <!--  <div class="mui-col-md-2"></div> -->
+
+      <div class="mui-divider"></div>
+
+    <!-- Area del Websocket -->
+
+        <div class="mui-row">
+          
+              <!-- Formulario -->
+
+         <div class="mui-col-md-4" style="background-color:white" >
+          <h1>JoaEzisystem Chat</h1> 
+          <form class="mui-form" >
+
+            <div class="mui-textfield">
+              <input id="email" type="text" placeholder="Ingrese email del cliente">
+            </div>
+
+            <!-- <div class="mui-textfield">
+              <input id="tipoUsuario" type="text" placeholder="Tipo de usuario (cliente o administrador) ">
+            </div> -->
+
+            <div class="mui-textfield">
+              <input id="mensaje" type="text" placeholder="Ingrese la respuesta para el cliente"  >
+            </div>
+            <div class="mui--text-center">
+              <button id="enviarMens" class=" mui-btn mui-btn--raised mui-btn--primary"> Enviar Mensaje</button>
+            </div>
+          </form>
+
+         </div>
+
+        <!-- Formulario -->
+           <div class="mui-col-md-8" >
+
+            <div id="mensajesChat"></div>
+
+           </div>
+
+        </div>
+     
+      
+       <br/>
+ 
+       <div class="mui-divider"></div>
+       
+       <!-- Area del Websocket -->
+
+
+
+
+       <!-- <div class="mui-row" style="margin-top:10px;background-color: rgb(241, 238, 238)">
+         <div class="mui--text-display1  mui--text-center" style="height:50px; color:blue">Listado Carrito</div>
+
+          <div class="mui-col-md-2" style="background-color: rgb(241, 238, 238)">
+            <h3></h3>
+          
+           
+          </div>
+          <div class="mui-col-md-8 mui--text-center " style="background-color: rgb(208, 222, 235)">
+            <h3></h3> -->
+
+            <!--Grilla Carrito  -->
+
+
+            <!--Grilla Carrito  -->
+          
+          <!-- </div>
+          <div class="mui-col-md-2"  style="background-color: rgb(241, 238, 238)">
+           <h3></h3>
+
+         
+          </div>
+
+        </div> -->
+
+        <!--  -->
+
+    </div><!-- container fluid -->
+
+
+
+    <script src="./js/mui.min.js"></script>
+   
+    <script src="./socket.io/socket.io.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="./js/chatAdm.js"></script>
+
+
+
+  </body>
+</html>
