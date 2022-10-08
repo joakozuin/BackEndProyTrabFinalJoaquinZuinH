@@ -102,5 +102,5 @@ router.get('/', getConfigServer);
 ```
 # Deploy
 
-Puede ejecutar una aplicación FrontEnd deployada en Heroku desde el siguiente link:
+Puede ejecutar una aplicación básica FrontEnd deployada en Heroku para testear algunas rutas desde el siguiente link:
 [https://joakowebbackendtrabfh.herokuapp.com//](https://joakowebbackendtrabfh.herokuapp.com/)
