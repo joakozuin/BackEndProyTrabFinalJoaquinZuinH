@@ -20,6 +20,7 @@ El sistema, es una apiRest que proporciona las rutas necesarios para poder menja
 - Websocket
 - Dotenv
 - Motor Handlebars
+- Nodemailer
 
 
 # Dependencias FrontEnd
