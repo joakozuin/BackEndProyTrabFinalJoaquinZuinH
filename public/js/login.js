@@ -1,8 +1,8 @@
 
 //URL del servidor
 //
-const URL='http://localhost:8080/'
-//const URL='https://joakowebbackendtrabfh.herokuapp.com/'
+//const URL='http://localhost:8080/'
+const URL='https://joakowebbackendtrabfh.herokuapp.com/'
 
 
 
